@@ -2,173 +2,209 @@
 <html lang="en">
 <head>
 <meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>Pranjal ❤️ Birthday Surprise</title>
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
 <meta name="theme-color" content="#050505">
+<title>Pranjal • 09.09.2026</title>
 <style>
-*{box-sizing:border-box}
-html,body{margin:0;background:#050505;color:#fff;font-family:Arial,Helvetica,sans-serif;min-height:100%;}
-body{overflow-x:hidden}
+:root{--red:#e50914;--pink:#ff5c78;--bg:#050505;--panel:#111;--soft:#b7b7b7}
+*{box-sizing:border-box}html{scroll-behavior:smooth}
+body{margin:0;background:var(--bg);color:#fff;font-family:Arial,Helvetica,sans-serif;overflow-x:hidden}
 button,input{font:inherit}
 .hidden{display:none!important}
-#intro{position:fixed;inset:0;background:#000;z-index:1000;display:flex;align-items:center;justify-content:center}
-#intro video{width:100%;height:100%;object-fit:cover;background:#000}
-#skip{position:absolute;right:18px;bottom:18px;border:1px solid #777;background:rgba(0,0,0,.65);color:#fff;border-radius:999px;padding:10px 16px;cursor:pointer}
-#gate{position:fixed;inset:0;z-index:900;background:radial-gradient(circle at 50% 30%,#2a0b10 0,#090707 38%,#030303 100%);display:none;align-items:center;justify-content:center;padding:24px}
-.gate-card{width:min(92vw,430px);text-align:center;padding:34px 24px;border:1px solid #3a2024;border-radius:24px;background:rgba(18,10,12,.88);box-shadow:0 20px 80px rgba(0,0,0,.6)}
-.n-mini{font-size:54px;font-weight:900;color:#e50914;line-height:1;margin-bottom:8px}
-.gate-card h1{font-size:28px;margin:10px 0 8px}
-.gate-card p{color:#c7bfc0;margin:0 0 22px}
-#password{width:100%;padding:15px 16px;border-radius:12px;border:1px solid #4b3a3d;background:#090909;color:#fff;outline:none}
-#password:focus{border-color:#e50914}
-#unlock{margin-top:14px;width:100%;padding:14px;border:0;border-radius:12px;background:#e50914;color:#fff;font-weight:800;cursor:pointer}
-#error{color:#ff7777;font-size:13px;min-height:18px;margin-top:10px}
-#app{display:none;min-height:100vh}
-.hero{min-height:88vh;display:flex;align-items:flex-end;padding:0 7vw 8vh;position:relative;overflow:hidden;background:linear-gradient(90deg,rgba(0,0,0,.9),rgba(0,0,0,.3)),url('assets/couple-1.jpg') center/cover}
-.hero:after{content:"";position:absolute;inset:0;background:linear-gradient(0deg,#050505 0,transparent 45%);pointer-events:none}
-.hero-content{position:relative;z-index:1;max-width:680px}
-.badge{display:inline-block;border:1px solid rgba(255,255,255,.25);border-radius:999px;padding:7px 12px;color:#ddd;background:rgba(0,0,0,.3);font-size:12px;letter-spacing:2px}
-.hero h1{font-size:clamp(44px,8vw,88px);line-height:.95;margin:18px 0 12px}
-.hero h1 span{color:#e50914}
-.hero p{font-size:clamp(16px,2vw,20px);color:#ddd;max-width:570px}
-.section{padding:52px 7vw}
-.section h2{font-size:30px;margin:0 0 24px}
-.rail{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:18px}
-.card{background:#111;border-radius:18px;overflow:hidden;border:1px solid #242424;box-shadow:0 10px 35px rgba(0,0,0,.25)}
-.card img{width:100%;height:360px;object-fit:cover;display:block;transition:transform .45s}
+
+/* INTRO */
+#intro{position:fixed;inset:0;background:#000;z-index:50;transition:opacity .8s ease}
+#introVideo{width:100%;height:100%;object-fit:cover}
+.intro-ui{position:absolute;inset:0;display:flex;align-items:flex-end;justify-content:center;padding:28px}
+.begin{border:0;border-radius:5px;background:#fff;color:#000;font-weight:800;padding:13px 24px;cursor:pointer}
+.soundhint{position:absolute;right:15px;bottom:17px;color:#aaa;font-size:11px}
+
+/* PASSWORD */
+#password{min-height:100svh;display:grid;place-items:center;padding:24px;
+background:radial-gradient(circle at 50% 30%,rgba(229,9,20,.22),transparent 34%),#050505}
+.login{width:min(440px,92vw);text-align:center}
+.logo{font-size:clamp(34px,9vw,58px);font-weight:900;letter-spacing:-3px}.logo b{color:var(--red)}
+.tag{color:#aaa;margin:8px 0 26px;font-size:14px}
+.field{display:flex;gap:8px}.field input{flex:1;background:#151515;border:1px solid #444;border-radius:5px;color:#fff;padding:14px;outline:0}
+.field input:focus{border-color:#fff}.enter{border:0;border-radius:5px;background:#fff;color:#000;font-weight:800;padding:0 17px}
+.err{height:22px;color:#ff6673;font-size:13px;padding-top:9px}.tiny{color:#666;font-size:11px;margin-top:25px}
+
+/* GIFT */
+#gift{min-height:100svh;display:grid;place-items:center;text-align:center;padding:24px;
+background:radial-gradient(circle at 50% 45%,rgba(229,9,20,.20),transparent 28%),#050505}
+.gift-title{font-size:clamp(24px,6vw,38px);font-weight:800}.gift-sub{color:#aaa;margin:10px 0 35px}
+.gift{width:200px;height:180px;position:relative;margin:auto;cursor:pointer;animation:float 2.2s ease-in-out infinite}
+@keyframes float{50%{transform:translateY(-9px)}}
+.body{position:absolute;left:20px;right:20px;bottom:0;height:120px;border-radius:8px 8px 17px 17px;background:linear-gradient(135deg,#a8000b,#ef1c2b)}
+.lid{position:absolute;left:9px;right:9px;top:32px;height:48px;border-radius:8px;background:linear-gradient(135deg,#d30713,#ff3b48);z-index:3}
+.ribbonV{position:absolute;left:87px;top:32px;width:27px;height:148px;background:#ffd86a;z-index:5;border-radius:3px}
+.ribbonH{position:absolute;left:9px;right:9px;top:47px;height:25px;background:#ffd86a;z-index:6}
+.bow:before,.bow:after{content:"";position:absolute;top:0;width:62px;height:43px;background:#ffd86a;border-radius:50%;z-index:7}
+.bow:before{left:44px;transform:rotate(28deg)}.bow:after{right:44px;transform:rotate(-28deg)}
+.tap{color:#aaa;font-size:11px;letter-spacing:2px;margin-top:27px}
+
+/* BIRTHDAY */
+#birthday{display:none}
+.hero{min-height:92svh;display:flex;align-items:flex-end;padding:7vw 6vw 65px;position:relative;overflow:hidden;
+background:
+linear-gradient(90deg,rgba(0,0,0,.9),rgba(0,0,0,.35),rgba(0,0,0,.9)),
+radial-gradient(circle at 72% 25%,rgba(229,9,20,.26),transparent 25%),
+linear-gradient(160deg,#1a0205,#050505 55%)}
+.hero:after{content:"";position:absolute;inset:auto 0 0;height:38%;background:linear-gradient(transparent,#050505)}
+.heroContent{position:relative;z-index:2;max-width:980px}
+.kicker{font-size:12px;letter-spacing:4px;text-transform:uppercase;color:#ccc;margin-bottom:16px}
+h1{font-size:clamp(45px,10vw,105px);line-height:.9;letter-spacing:-5px;margin:0}
+.flower{font-size:.58em}.heroText{max-width:650px;color:#ddd;font-size:17px;line-height:1.5;margin-top:22px}
+.scroll{margin-top:27px;color:#999;letter-spacing:2px;font-size:11px;text-transform:uppercase;animation:blink 1.8s infinite}
+@keyframes blink{50%{opacity:.35}}
+
+.wrap{padding:25px 5vw 80px}.title{font-size:clamp(24px,5vw,36px);margin:10px 0 20px}
+.row{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px}
+.card{background:#121212;border-radius:9px;overflow:hidden;border:1px solid #222;box-shadow:0 16px 45px #000}
+.card img{display:block;width:100%;height:100%;object-fit:cover;aspect-ratio:16/10;transition:transform .5s}
 .card:hover img{transform:scale(1.035)}
-.note{margin-top:32px;background:linear-gradient(145deg,#161012,#0d0d0d);border:1px solid #322126;border-radius:22px;padding:28px;line-height:1.75;color:#eee;white-space:pre-wrap}
-.child{background:linear-gradient(180deg,#100a0d,#050505)}
-.child-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:16px}
-.child-grid img{width:100%;height:330px;object-fit:cover;border-radius:18px;border:1px solid #272727;display:block}
-.footer{text-align:center;color:#888;padding:35px 20px 60px}
-#music{position:fixed;right:18px;bottom:18px;z-index:100;background:#e50914;border:0;color:#fff;width:52px;height:52px;border-radius:50%;font-size:20px;cursor:pointer;box-shadow:0 8px 30px rgba(229,9,20,.35)}
-.confetti{position:fixed;inset:0;pointer-events:none;z-index:80;overflow:hidden}
-.confetti i{position:absolute;top:-20px;width:8px;height:14px;animation:fall linear forwards}
-@keyframes fall{to{transform:translateY(110vh) rotate(720deg);opacity:0}}
-@media(max-width:800px){
- .rail{grid-template-columns:1fr}
- .child-grid{grid-template-columns:repeat(2,minmax(0,1fr))}
- .card img{height:430px}
- .child-grid img{height:300px}
- .hero{min-height:82vh;padding:0 6vw 7vh}
-}
+.note{max-width:900px;margin:45px auto 0;background:linear-gradient(145deg,#161616,#0c0c0c);border:1px solid #252525;border-radius:15px;padding:25px 23px;box-shadow:0 20px 70px #000}
+.note h2{margin:0 0 15px;font-size:24px}.note p{margin:0;color:#e9e9e9;font-size:15px;line-height:1.85;white-space:pre-line}
+.divider{height:1px;background:linear-gradient(90deg,transparent,#333,transparent);margin:58px 0}
+.videoBox{border-radius:12px;overflow:hidden;background:#000;border:1px solid #222;box-shadow:0 20px 65px #000}
+.videoBox video{width:100%;display:block;max-height:75vh;background:#000}
+.footer{text-align:center;color:#555;font-size:11px;padding:38px 10px 10px}
+@media(max-width:650px){.row{grid-template-columns:1fr}.hero{min-height:82svh;padding:10vw 6vw 52px}h1{letter-spacing:-3px}.field{flex-direction:column}.enter{height:48px}}
 </style>
 </head>
 <body>
-<div id="intro">
-  <video id="introVideo" autoplay muted playsinline preload="auto">
-    <source src="assets/intro.mp4" type="video/mp4">
+
+<section id="intro">
+  <video id="introVideo" playsinline preload="auto">
+    <source src="intro.mp4" type="video/mp4">
   </video>
-  <button id="skip">Skip intro</button>
-</div>
-
-<div id="gate">
-  <div class="gate-card">
-    <div class="n-mini">N</div>
-    <h1>One little secret… ❤️</h1>
-    <p>Enter the password to open Pranjal's birthday surprise.</p>
-    <input id="password" type="password" inputmode="text" placeholder="Password">
-    <button id="unlock">Unlock Surprise</button>
-    <div id="error"></div>
+  <div class="intro-ui" id="introUI">
+    <button class="begin" id="begin">TAP TO BEGIN</button>
+    <div class="soundhint">🔊 sound on</div>
   </div>
-</div>
+</section>
 
-<main id="app">
+<section id="password" class="hidden">
+  <div class="login">
+    <div class="logo">PRANJAL<b>+</b></div>
+    <div class="tag">Your birthday surprise is locked. 🌷</div>
+    <div class="field">
+      <input id="pw" type="password" placeholder="Enter password" autocomplete="off">
+      <button class="enter" id="go">ENTER</button>
+    </div>
+    <div class="err" id="err"></div>
+    <div class="tiny">09 • 09 • 2010</div>
+  </div>
+</section>
+
+<section id="gift" class="hidden">
+  <div>
+    <div class="gift-title">One more thing… 🎁</div>
+    <div class="gift-sub">Tap the gift. Your surprise is waiting.</div>
+    <div class="gift" id="giftBtn" tabindex="0" role="button" aria-label="Open gift">
+      <div class="bow"></div><div class="lid"></div><div class="ribbonH"></div><div class="body"></div><div class="ribbonV"></div>
+    </div>
+    <div class="tap">TAP TO OPEN</div>
+  </div>
+</section>
+
+<main id="birthday">
   <section class="hero">
-    <div class="hero-content">
-      <div class="badge">A SPECIAL PRESENTATION</div>
-      <h1>Happy Birthday, <span>Pranjal</span> 🌷</h1>
-      <p>Some memories, some smiles, and a little surprise made just for you. ❤️</p>
+    <div class="heroContent">
+      <div class="kicker">A special day • September 9</div>
+      <h1>Happiest Birthday<br>Pranjal <span class="flower">🌷</span></h1>
+      <div class="heroText">A tiny little corner of the internet, made just for your day — with memories, childhood moments and a very long message waiting below.</div>
+      <div class="scroll">↓ keep scrolling</div>
     </div>
   </section>
 
-  <section class="section">
-    <h2>Our little memories ❤️</h2>
-    <div class="rail">
-      <div class="card"><img src="assets/couple-1.jpg" alt="A memory together"></div>
-      <div class="card"><img src="assets/couple-2.jpg" alt="A memory together"></div>
-      <div class="card"><img src="assets/couple-3.jpg" alt="A memory together"></div>
+  <section class="wrap">
+    <h2 class="title">Our memories ❤️</h2>
+    <div class="row">
+      <div class="card"><img src="couple-1.jpg" alt="Couple memory 1"></div>
+      <div class="card"><img src="couple-2.jpg" alt="Couple memory 2"></div>
+      <div class="card"><img src="couple-3.jpg" alt="Couple memory 3"></div>
+      <div class="card"><img src="couple-4.jpg" alt="Couple memory 4"></div>
     </div>
-    <div class="note">Happppppppyyyyyy Birthdayyyyyy tooooo my sweetest rasssmalaiiiiii I loooovvveeee youuuuuuuuu bohot bohot bohottt zyadaaaaa aaaaaj mai bohot khussshhhh hu sachmeeee uuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuummmmmmmmmmmmmmnnnnnaaaaaaaaaahhhhhhh 💋🫂💋💋💋💋💋💋💋💋💋💋💋💋💋💋 aaaaj Meriii baaaaaabuuuuuu 16 saaal ki hogyi hai uuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuummmmmmmmmmmmnnnmmnnnnnaaaaaaaaaahhhhhhh tooo herrrrrrrr!!!!!! Baaaaabuuuuuu aaaaap itne se the chahiye se aaapki dance wali video me aaaap itne bade kaise hogye hainn??? Nahi matlab pehle bhi itne cuteee aur ab bhi itneeee cuteeeee and hot and sasssyyyy justtttt loveeeee youuuuuuu. Pata hai aaapko lag rha higa ki mai excited nahi tha aapke birthday ko leke lekin nahi hai aisa mai bohot time se soch rakha tha ye aur mai bohot excited tha kabse aur aaaaj to bohot hu mai kabse ye plan soch rakha tha aur harr baaar fail hogya lekin aaaj sahi se hogya I loooovvveeee youuuuuuuuu khoooooob saaaaara HAPPPPPYYYYYY BIRTHDAY ONE AGAIN Devraj's Pranjal Sharma🌷</div>
-  </section>
 
-  <section class="section child">
-    <h2>And then… the little Pranjal 🥹❤️</h2>
-    <div class="child-grid">
-      <img src="assets/childhood-1.jpg" alt="Pranjal childhood memory">
-      <img src="assets/childhood-2.jpg" alt="Pranjal childhood memory">
-      <img src="assets/childhood-3.jpg" alt="Pranjal childhood memory">
-      <img src="assets/childhood-4.jpg" alt="Pranjal childhood memory">
+    <article class="note">
+      <h2>For my sweetest rasmalaiii 🌷</h2>
+      <p>Happppppppyyyyyy Birthdayyyyyy tooooo my sweetest rasssmalaiiiiii I loooovvveeee youuuuuuuuu bohot bohot bohottt zyadaaaaa aaaaaj mai bohot khussshhhh hu sachmeeee uuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuummmmmmmmmmmmmmnnnnnaaaaaaaaaahhhhhhh aaaaaj Meriii baaaaaabuuuuuu 16 saaal ki hogyi hai uuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuummmmmmmmmmmmnnnmmnnnnnaaaaaaaaaahhhhhhh tooo herrrrrrrr!!!!!! Baaaaabuuuuuu aaaaap itne se the chahiye se aaapki dance wali video me aaaap itne bade kaise hogye hainn??? Nahi matlab pehle bhi itne cuteee aur ab bhi itneeee cuteeeee and sasssyyyy justttttt loveeeee youuuuuuu. Pata hai aaapko lag rha higa ki mai excited nahi tha aapke birthday ko leke lekin nahi hai aisa mai bohot time se soch rakha tha ye aur mai bohot excited tha kabse aur aaaaj to bohot hu mai kabse ye plan soch rakha tha aur harr baaar fail hogya lekin aaaj sahi se hogya I loooovvveeee youuuuuuuuu khoooooob saaaaara HAPPPPPYYYYYY BIRTHDAY ONE AGAIN Devraj's Pranjal Sharma🌷</p>
+    </article>
+
+    <div class="divider"></div>
+
+    <h2 class="title">Then & now ✨</h2>
+    <div class="row">
+      <div class="card"><img src="childhood-1.jpg" alt="Childhood memory 1"></div>
+      <div class="card"><img src="childhood-2.jpg" alt="Childhood memory 2"></div>
+      <div class="card"><img src="childhood-3.jpg" alt="Childhood memory 3"></div>
+      <div class="card"><img src="childhood-4.jpg" alt="Childhood memory 4"></div>
     </div>
-    <div class="note">Pranjal dil se I loooovvveeee youuuuuuuuu bohot zyada sabseeeee zyadaaaaaaaaa sachme jab bhi teri bachpan ki photos dekhta hu to mai meri beti admire karta hu cuteee sii gori si teri jaisi. Abhi to ye 2nd birthday hai tera mere saath abhi to lagbhag 60 birthdays aur manane hai mere saath tujhe abhi apan apne friends ke saath mana rahe hai phir apan shaadi ke baad apni family ke saath phir apne bachcho ke saath phir apne pote potiyon ke saath yeyeyeyeyyeyeyeyee uuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuummmmmmmmmmmmmmmmmmmmaaaaaaaaaahhhhhhh 💋 🫂 💋 💋 🫂 🫂 💋 🫂 💋 🫂 💋 🫂 💋 🫂 💋 🫂 💋 🫂 💋 🫂 💋 I loooovvveeee youuuuuuuuu sabseeeee zyadaaaaa aur ab zyada hawa me mat udnee lag jana samjhi na huhhhhh aaayi badi khaaa jaaaunga tereko💋🌷🌷🌷🌷🌷</div>
+
+    <div class="divider"></div>
+
+    <h2 class="title">And now… the dance video 💃</h2>
+    <div class="videoBox">
+      <video controls playsinline preload="metadata">
+        <source src="dancing-video.mp4" type="video/mp4">
+      </video>
+    </div>
+
+    <article class="note">
+      <h2>One last note 🌷</h2>
+      <p>Pranjal tujhe pata nahi hai lekin mai tujhse bohot zyada pyaaar karta hu itna kii tujhe pata nahi haiii teri bachpan ki photos dekhke mai apni beti admire karta hu ki vo bhi aisi hogi itni cuteeee gorii si kuchhcupchchu si aur ye to 2nd birthday hai tera mere saath tujhe to abhi mere saath lagbhag 60 birthdays aur manane hai abhi apan apne friend ke saath mana rhe hai, phir apan apni family ke saath, phir apne bachcho ke saath, phir apne pote potiyon ke saath aur vo cuteee se chote chote se honge vo bolenge Happyyy birthday tooo youuu mummmmaa lekin unse pehle mai bolunga Happy Birthday toooo mommmmmyyyyyy I loooovvveeee youuuuuuuuu sabseeee zyadaaaaaaaaa 🌷🌷🌷🌷🌷🌷</p>
+    </article>
+
+    <div class="footer">Made with love • Pranjal • 09.09.2026</div>
   </section>
-  <div class="footer">Made with ❤️ for Pranjal · Happy Birthday 🌷</div>
 </main>
 
-<audio id="music" preload="auto">
-  <source src="assets/music.m4a" type="audio/mp4">
-</audio>
-<button id="musicBtn" aria-label="Pause music">🎵</button>
-<div class="confetti" id="confetti"></div>
+<audio id="music" loop preload="auto"><source src="pal-pal-dil-ke-paas.m4a" type="audio/mp4"></audio>
+<audio id="tudum" preload="auto"><source src="tudum.wav" type="audio/wav"></audio>
 
 <script>
-const intro=document.getElementById('intro');
-const introVideo=document.getElementById('introVideo');
-const gate=document.getElementById('gate');
-const app=document.getElementById('app');
-const skip=document.getElementById('skip');
-const music=document.getElementById('music');
-const musicBtn=document.getElementById('musicBtn');
+const intro=document.getElementById('intro'), iv=document.getElementById('introVideo');
+const ui=document.getElementById('introUI'), begin=document.getElementById('begin');
+const pass=document.getElementById('password'), gift=document.getElementById('gift'), birthday=document.getElementById('birthday');
+const pw=document.getElementById('pw'), go=document.getElementById('go'), err=document.getElementById('err');
+const music=document.getElementById('music'), tudum=document.getElementById('tudum');
 
-function showGate(){
-  intro.remove();
-  gate.style.display='flex';
+function revealPassword(){
+  if(intro.classList.contains('hidden')) return;
+  tudum.currentTime=0; tudum.play().catch(()=>{});
+  intro.style.opacity='0';
+  setTimeout(()=>{intro.classList.add('hidden');pass.classList.remove('hidden');pw.focus();},800);
 }
-introVideo.addEventListener('ended',showGate);
-setTimeout(()=>{ if(document.getElementById('intro')) showGate(); },9000);
-skip.addEventListener('click',showGate);
-
-function celebrate(){
-  const box=document.getElementById('confetti');
-  for(let i=0;i<90;i++){
-    const p=document.createElement('i');
-    p.style.left=(Math.random()*100)+'%';
-    p.style.animationDuration=(2+Math.random()*3)+'s';
-    p.style.animationDelay=(Math.random()*.8)+'s';
-    p.style.transform='rotate('+Math.random()*360+'deg)';
-    p.style.background=['#e50914','#fff','#f3b6c0','#ffd166'][Math.floor(Math.random()*4)];
-    box.appendChild(p);
-  }
-  setTimeout(()=>box.innerHTML='',6000);
-}
-
-document.getElementById('unlock').addEventListener('click',unlock);
-document.getElementById('password').addEventListener('keydown',e=>{if(e.key==='Enter')unlock()});
+begin.addEventListener('click',async()=>{
+  ui.classList.add('hidden');
+  try{await iv.play();}catch(e){revealPassword();}
+});
+iv.addEventListener('ended',revealPassword);
+iv.addEventListener('error',revealPassword);
 
 function unlock(){
-  if(document.getElementById('password').value==='pranjal@ily'){
-    gate.remove();
-    app.style.display='block';
-    music.volume=.38;
+  if(pw.value==='pranjal@ily'){
+    err.textContent='';
+    pass.classList.add('hidden');
+    gift.classList.remove('hidden');
+    music.currentTime=0;
     music.play().catch(()=>{});
-    musicBtn.textContent='🔊';
-    celebrate();
-    window.scrollTo({top:0,behavior:'smooth'});
   }else{
-    document.getElementById('error').textContent='Wrong password ❤️ Try again.';
+    err.textContent='Wrong password — try again ❤️';
+    pw.value='';pw.focus();
   }
 }
+go.addEventListener('click',unlock);
+pw.addEventListener('keydown',e=>{if(e.key==='Enter')unlock();});
 
-musicBtn.addEventListener('click',()=>{
-  if(music.paused){
-    music.play();
-    musicBtn.textContent='🔊';
-  }else{
-    music.pause();
-    musicBtn.textContent='🎵';
-  }
-});
+function openGift(){
+  gift.classList.add('hidden');birthday.style.display='block';
+  window.scrollTo({top:0,behavior:'instant'});
+  document.title='Happiest Birthday Pranjal 🌷';
+}
+document.getElementById('giftBtn').addEventListener('click',openGift);
+document.getElementById('giftBtn').addEventListener('keydown',e=>{if(e.key==='Enter'||e.key===' ')openGift();});
 </script>
 </body>
 </html>
